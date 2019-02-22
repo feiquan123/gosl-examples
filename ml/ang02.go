@@ -16,7 +16,7 @@ func ang02() {
 	// Logistic Regression Test # 2 from Prof. Andrew Ng's online course
 
 	// data (mapped)
-	XYraw := io.ReadMatrix("../ml/samples/angEx2data2.txt")
+	XYraw := io.ReadMatrix("./samples/angEx2data2.txt")
 	nOriFeatures := len(XYraw[0]) - 1 // original number of features
 	iFeature := 0                     // first index of feature to be generate polynomial
 	jFeature := 1                     // second index of feature to be generate polynomial

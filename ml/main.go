@@ -4,22 +4,32 @@
 
 package main
 
-import "flag"
+import (
+	"flag"
 
-var name = flag.String("name", "simple01", "Example name")
-var runall = flag.Bool("all", true, "Run all examples?")
+	"github.com/cpmech/gosl/chk"
+)
+
+var name = flag.String("name", "", "Example name. Use empty to run all examples")
+
+var examples = map[string]func(){
+	"ang01":    ang01,
+	"ang02":    ang02,
+	"kmeans01": kmeans01,
+	"mclass01": mclass01,
+	"simple01": simple01,
+}
 
 func main() {
+	defer chk.Recover()
 	flag.Parse()
-	if *runall {
-		ang01()
-		ang02()
-		kmeans01()
-		mclass01()
-		simple01()
+	if *name == "" {
+		for _, f := range examples {
+			f()
+		}
 		return
 	}
-	if *name == "simple01" {
-		simple01()
+	if f, ok := examples[*name]; ok {
+		f()
 	}
 }

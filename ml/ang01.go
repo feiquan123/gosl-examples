@@ -16,7 +16,7 @@ func ang01() {
 	// Logistic Regression Test # 1 from Prof. Andrew Ng's online course
 
 	// load data
-	XYraw := io.ReadMatrix("../ml/samples/angEx2data1.txt")
+	XYraw := io.ReadMatrix("./samples/angEx2data1.txt")
 	data := ml.NewDataGivenRawXY(XYraw)
 
 	// model
